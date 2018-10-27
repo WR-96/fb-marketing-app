@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <%= link_to "Marketing App", root_path, id: "logo", class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ml-auto">
+      <!-- TODO make the dropdown menu for each user -->
+        <% if false #user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log out", destroy_user_session_path , method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Log in", '#' , class: "nav-link" %></li>
+        <% end %>
+
+    </div>
+  </nav>
+</header>
