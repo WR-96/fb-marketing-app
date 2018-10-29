@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
     put 'admins', to: 'admins/registrations#update', as: 'admin_registration'
   end
+  scope "/admin" do
+    resources :users
+  end
   authenticated :admin do
     root 'admin#index', as: :authenticated_admin_root
   end
