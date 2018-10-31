@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     root 'admin#index', as: :authenticated_admin_root
   end
 
-  root 'home#index'
+  resources :companies do
+    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   resources :users
-  resources :companies
+  root 'home#index'
 end
