@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :companies do
+    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
+    resources :campaigns, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
+
+  resources :users
   # Prevent users new registrations
   devise_for :users, path: 'users', controllers: {
     sessions: 'users/sessions',
@@ -27,10 +33,5 @@ Rails.application.routes.draw do
     root 'admin#index', as: :authenticated_admin_root
   end
 
-  resources :companies do
-    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
-  end
-
-  resources :users
   root 'home#index'
 end
