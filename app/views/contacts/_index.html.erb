@@ -1,0 +1,30 @@
+<h1>Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Cell number</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.cell_number %></td>
+        <td><%= contact.phone_number %></td>
+        <td><%= link_to 'Edit', edit_company_contact_path(@company, contact) %></td>
+        <td><%= link_to 'Destroy', company_contact_path(@company, contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_company_contact_path(@company, @company.contacts.build) %>
