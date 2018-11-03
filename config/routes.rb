@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   # Prevent users new registrations
-  devise_for :users, path: 'users', controllers: {
+  devise_for :users, path: 'user', controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations' 
   },skip:  [:registrations] 
