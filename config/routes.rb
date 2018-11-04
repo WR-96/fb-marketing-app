@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations' 
   },skip:  [:registrations] 
   as :user do
-    get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
-    put 'users', to: 'users/registrations#update', as: 'user_registration'
+    get 'user/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
+    put 'user', to: 'users/registrations#update', as: 'user_registration'
   end
   authenticated :user do
     root 'home#index', as: :authenticated_user_root
