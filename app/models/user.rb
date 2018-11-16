@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, authentication_keys: [:login]
   
-
+  # TODO: make this methods private a ver que chingados pasa 
   def login
     @login || self.username
   end

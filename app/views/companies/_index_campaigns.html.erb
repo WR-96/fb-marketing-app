@@ -1,0 +1,23 @@
+<!-- Todo: make ajax updates and destroy for campaigns-->
+<h1>Campaigns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company.campaigns.each do |campaign| %>
+      <tr>
+        <td><%= campaign.name %></td>
+        <td><%= campaign.start_date %></td>
+        <td><%= campaign.end_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
+
   resources :companies do
     resources :contacts, only: [:new, :create, :edit, :update, :destroy]
-    resources :campaigns, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 
   resources :users
