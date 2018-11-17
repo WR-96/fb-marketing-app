@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
   before_action :set_company
-  before_action :set_contact, only: [:edit, :update, :destroy]
+  before_action :set_contact, only: %i[edit update destroy]
 
   # GET /contacts/new
   def new
@@ -8,19 +10,18 @@ class ContactsController < ApplicationController
   end
 
   # GET /contacts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /contacts
   # POST /contacts.json
   def create
     @contact = @company.contacts.build(contact_params)
 
-      if @contact.save
-        redirect_to(company_path(@contact.company), notice: 'Contact was successfully created.' )
-      else
-        render action: 'new'
-      end
+    if @contact.save
+      redirect_to(company_path(@contact.company), notice: 'Contact was successfully created.')
+    else
+      render action: 'new'
+    end
   end
 
   # PATCH/PUT /contacts/1
@@ -45,16 +46,18 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params[:company_id])
-    end
-    
-    def set_contact
-      @contact = @company.contacts.find(params[:id])
-    end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:name, :phone_number, :cell_number, :email, :company_id)
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
+
+  def set_contact
+    @contact = @company.contacts.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require(:contact).permit(:name, :phone_number, :cell_number, :email, :company_id)
+  end
 end
