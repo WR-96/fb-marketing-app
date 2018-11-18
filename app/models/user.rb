@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :campaigns, foreign_key: 'community_manager_id'
+
   enum role: %i[community_manager content_generator designer]
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
