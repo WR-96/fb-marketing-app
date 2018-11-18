@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: %i[show edit update destroy]
 
   def index
     @campaigns = Campaign.all
@@ -9,8 +11,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @campaign = Campaign.new(campaign_params)
@@ -45,11 +46,12 @@ class CampaignsController < ApplicationController
   end
 
   private
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
 
-    def campaign_params
-      params.require(:campaign).permit(:name, :goald, :description, :start_date, :end_date, :company_id)
-    end
+  def set_campaign
+    @campaign = Campaign.find(params[:id])
+  end
+
+  def campaign_params
+    params.require(:campaign).permit(:name, :goald, :description, :start_date, :end_date, :company_id)
+  end
 end
