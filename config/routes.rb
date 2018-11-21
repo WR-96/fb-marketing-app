@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :admin do
-    root 'admin#index', as: :authenticated_admin_root
+    root 'admin_dashboard#index', as: :authenticated_admin_root
   end
 
   root 'home#index'
